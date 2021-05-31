@@ -7,6 +7,7 @@ from utils.augmentations import FastBaseTransform
 from utils.output_utils import NMS, after_nms
 from data.config import update_config
 
+
 # 目标对象不变，背景区域做模糊处理
 # k: 控制高斯模糊矩阵大小
 def add_gaussian_blur(image_path, save_path, k):
