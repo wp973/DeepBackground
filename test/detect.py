@@ -82,7 +82,7 @@ def save_error(errors, path, result_path):
     files.remove('.directory')
     for line in files:
         img = cv2.imread(path + line)
-        if i<len(errors) and line == errors[i]:
+        if i < len(errors) and line == errors[i]:
             cv2.imwrite(result_path + line, img)
             i += 1
 
@@ -98,11 +98,25 @@ def inconsistent_nums(c1, c2, score_1, score_2, o):
     j = 0
     while j < len(c1):
         if c1[j] != c2[j]:
-            num = num+1
+            num = num + 1
         elif c1[j] == c2[j] and abs(score_1[j] - score_2[j]) > o:
             num = num + 1
         j = j + 1
     return num
+
+
+# BRC计算
+# n：测试图像总数
+# N：不一致行为数目
+# m：the total number of mutation operators corresponding to the transformation method
+# m：每种变换的变异算子数目
+# H：变换方法的数目
+def brc(N, n, m, H):
+    w = 1 / m
+    u = n / N
+    brct = w * u
+    brc = brct / H
+    return brc
 
 
 if __name__ == '__main__':
